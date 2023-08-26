@@ -1,2 +1,7 @@
 venv
 volumes
+.env
+.vscode
+src/__pycache__
+*/**/__pycache__
+.vscode/settings.json
