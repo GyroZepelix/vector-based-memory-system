@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Web Console</title>
+</head>
+<body class="bg-zinc-800 text-zinc-200">
+    <div class="flex items-center flex-col gap-3 lg:mx-56 md:mx-24 mx-5">
+        <h1 class="text-3xl my-4 font-bold" >Domagoj's Vector Database Manager</h1>
+        <div class="flex gap-2">
+            <button class="rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+            hx-get="/templates/search" hx-target="#section">Search</button>
+            <button class="rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+            hx-get="/templates/insert" hx-target="#section">Insert</button>
+            <button class="rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+            hx-get="/templates/all-embeddings" hx-target="#section">Get all</button>
+            <button class="rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+            hx-get="/api/load-presets">Load presets</button>
+        </div>
+        <hr class="w-[80%]"/>
+        <div id="section"></div>
+    </div>
+</body>
+</html>

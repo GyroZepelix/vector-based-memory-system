@@ -1,14 +1,14 @@
 import openai
 import dotenv
 import json
-from libs.file_manager import EmbeddingsManager
+from file_manager import EmbeddingsManager
 
 dotenv.load_dotenv("../.env")
 env_variables = dotenv.get_key(".env", "OPENAI_API_KEY")
 
 openai.api_key = env_variables
     
-embeddings_manager = EmbeddingsManager("src/out/embeddings.json")
+embeddings_manager = EmbeddingsManager("libs/out/embeddings.json")
 lines = []
 input_text = input("Enter text to embed ( type :exit() to exit): ")
 while True:
@@ -27,7 +27,7 @@ if not isinstance(response, dict):
     print("Response: ", response)
     exit(1)
 
-file = open("src/out/last_embedder_output.json", "w")
+file = open("libs/out/last_embedder_output.json", "w")
 file.write(json.dumps(response, indent=4))
 file.close()
 

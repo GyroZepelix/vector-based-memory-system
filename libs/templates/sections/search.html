@@ -1,0 +1,8 @@
+<h2 class="text-xl" >Search for similar text</h2>
+<form hx-get="/api/search" hx-target="#search-results">
+    <input class="bg-zinc-700" type="text" name="text" />
+    <button type="submit" 
+    class="border-2 rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+    >Submit</button>
+</form>
+<div id="search-results"></div>
