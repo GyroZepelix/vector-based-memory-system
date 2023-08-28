@@ -50,7 +50,7 @@ class AppService:
         )
         
     def import_embeddings(self):
-        embeddings_manager = EmbeddingsManager("libs/out/embeddings.json")
+        embeddings_manager = EmbeddingsManager("src/out/embeddings.json")
         embeddings_records = embeddings_manager.load_embeddings()
         all_embeddings = self.collection.query(
             expr = "pk >= '0'", 
