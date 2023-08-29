@@ -3,6 +3,7 @@ from pymilvus import (
     utility,
     FieldSchema, CollectionSchema, DataType,
     Collection,
+    SearchFuture
 )
 
 from file_manager import EmbeddingsManager
@@ -49,6 +50,19 @@ class AppService:
             output_fields = ["text", "embeddings"]
         )
         
+    def insert_embeddings(self, embeddings_record):
+        all_embeddings = self.collection.query(
+            expr = "pk >= '0'", 
+            output_fields = ["text"]
+        )
+        all_texts = []
+        for record in all_embeddings:
+            all_texts.append(record["text"])
+        if embeddings_record["text"] in all_texts:
+            return False            
+        self.collection.insert(embeddings_record) 
+        return True   
+    
     def import_embeddings(self):
         embeddings_manager = EmbeddingsManager("src/out/embeddings.json")
         embeddings_records = embeddings_manager.load_embeddings()
@@ -71,3 +85,29 @@ class AppService:
             self.collection.insert(data)
         else:
             print("No new embeddings to import.")
+            
+    def search_embeddings(self, vectors_to_search, search_params) -> list[dict]:
+        result = self.collection.search(
+            data=[vectors_to_search],
+            param=search_params,
+            anns_field="embeddings",
+            limit=10,
+            output_fields=["text"]
+        )
+        
+        if isinstance(result, SearchFuture):
+            result = result.result()
+        
+        to_return = []
+        
+        for entity in result[0]:
+            to_return.append({
+                "text": entity.entity.get("text"),
+                "distance": entity.distance
+            })
+        
+        return to_return
+        
+    
+if __name__ == "__main__":
+    print("Should not be run as this is a library.")

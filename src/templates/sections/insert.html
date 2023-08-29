@@ -1,1 +1,10 @@
-test
+<div class="flex gap-2 flex-col items-center">
+    <h2 class="text-xl" >Insert and embed text</h2>
+    <form hx-post="/api/insert" hx-target="#embed-results">
+        <input class="bg-zinc-700" type="text" name="text" />
+        <button type="submit" 
+        class="border-2 rounded-md px-2 py-1 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 hover:text-zinc-100"
+        >Submit</button>
+    </form>
+    <div id="embed-results"></div>
+</div>
