@@ -1,4 +1,9 @@
-# Vector-Based Memory System
+<h1 style="text-align: center">Vector-Based Memory System</h1>
+<p align="center">
+<img height="250" src="./assets/brain.webp">
+</p>
+
+## About
 
 The aim of this project was to explore and prototype a novel long-term memory solution for Language Models (LLMs). The core concept involves storing text as embedded vectors within a database, facilitating efficient text retrieval through vector search algorithms. This approach enables the storage of substantial data volumes within a compact space while ensuring rapid search capabilities.
 
@@ -19,7 +24,7 @@ To provide a practical demonstration, a sample dataset is included and can be ac
 ## Installation
 
 1. Clone the repository.
-2. Change into the project directory `cd vector-database`.
+2. Change into the project directory `cd vector-based-memory-system`.
 3. Install dependencies with `pip -r requirements.txt`.
 
 ## Usage
